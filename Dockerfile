@@ -1,13 +1,16 @@
-FROM python:3.11
+FROM node:14
+LABEL authors="philipppollmann"
 
 WORKDIR /app
 
-COPY . /app
+COPY package*.json ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN npm install
 
-ENV FLASK_RUN_HOST=0.0.0.0
+COPY . .
 
-EXPOSE 5000
+RUN npm run build
 
-CMD ["python", "run.py"]
+EXPOSE 3000
+
+CMD ["npm", "start"]
