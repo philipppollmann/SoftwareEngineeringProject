@@ -9,7 +9,7 @@
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
           <li>
-            <NuxtLink to="/about" class="mr-4 hover:underline md:mr-6 ">About</NuxtLink>
+            <NuxtLink to="/" class="mr-4 hover:underline md:mr-6 ">About</NuxtLink>
           </li>
           <li>
             <NuxtLink to="/" class="mr-4 hover:underline md:mr-6 ">Privacy Policy</NuxtLink>
