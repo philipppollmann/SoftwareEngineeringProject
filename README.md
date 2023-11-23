@@ -1,8 +1,4 @@
 ![Test](https://res.cloudinary.com/hl8zoliad/image/fetch/f_auto/https%3A%2F%2Fraw.githubusercontent.com%2Fnuxt%2Fnuxt%2Fmaster%2F.%2F.github%2Fassets%2Fbanner.png)
-# Personal Website
-This is my personal website build using the NuxtJS framework. </br>
-Here you will find information about me, my projects and interests. </br>
-The  website is available at [philipp.pollmann.rocks](https://philipp.pollmann.rocks/)
 
 ## technologies
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -79,8 +75,6 @@ docker run -p 3000:3000 nuxt-app
 npm run generate
 ```
 
-## Author
-- Philipp Pollmann
 
 ### `packages`
 1. [eslint](https://nuxt.com/modules/eslint)

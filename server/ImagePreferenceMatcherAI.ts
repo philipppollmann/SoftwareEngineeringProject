@@ -1,4 +1,3 @@
-import {th} from "vuetify/locale";
 
 class AIImage {
     private name: string;
@@ -39,11 +38,53 @@ function getImageByName(name: string): AIImage | undefined {
     return imagesArray.find(image => image.getName() === name);
 }
 
+console.log("test");
+function levenshteinDistance(a: string, b: string): number {
+    const matrix: number[][] = [];
 
-function matchImage(color: string, category: string): string{
-    let bestMatch: AIImage | undefined;
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
 
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
 
-    return "assets/img/bird.jpg";
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            const cost = a[j - 1] === b[i - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j - 1] + cost
+            );
+        }
+    }
+
+    return matrix[b.length][a.length];
 }
 
+function matchImage(color: string, category: string): string {
+    let bestMatch: AIImage | undefined;
+    let bestMatchScore: number = Number.MAX_VALUE;
+
+    for (const image of imagesArray) {
+        const colorDifference = levenshteinDistance(color, image.getColor());
+        const categoryDifference = levenshteinDistance(category, image.getCategory());
+
+        const totalDifference = colorDifference + categoryDifference;
+
+        if (totalDifference < bestMatchScore) {
+            bestMatchScore = totalDifference;
+            bestMatch = image;
+        }
+    }
+
+    if (bestMatch) {
+        return `assets/img/${bestMatch.getName()}.jpg`;
+    } else {
+        return "assets/img/default.jpg";
+    }
+}
+
+console.log(matchImage('white', 'car'));
