@@ -64,7 +64,7 @@ function levenshteinDistance(a: string, b: string): number {
     return matrix[b.length][a.length];
 }
 
-function matchImage(color: string, category: string): string {
+export function matchImage(color: string, category: string): string {
     let bestMatch: AIImage | undefined;
     let bestMatchScore: number = Number.MAX_VALUE;
 

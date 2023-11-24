@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/img/banner.png" alt="Banner">
+    <img src="../public/img/banner.png" alt="Banner">
 
     <div class="flex justify-center items-center h-screen">
       <div class="bg-gray-500 border-gray-800 border-2 rounded-lg w-72 h-72 overflow-hidden text-center">
@@ -13,6 +13,7 @@
             <option value="car">Car</option>
           </select>
         </div>
+
 
         <p>Select your preferred color:</p>
         <div class="relative inline-block text-left">
@@ -29,7 +30,7 @@
 
         <button @click="submitForm" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-auto">Submit</button>
 
-        <img :src="category" :alt="color" class="w-40 h-40 object-contain cursor-pointer items-center mx-auto"/>
+        <img :src="image" :alt="color" class="w-40 h-40 object-contain cursor-pointer items-center mx-auto"/>
       </div>
     </div>
   </div>
@@ -37,12 +38,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { matchImage } from '@/server/ImagePreferenceMatcherAI';
 
 export default defineComponent({
   data() {
     return {
       category: 'japan',
       color: 'white',
+      image: '',
     };
   },
   methods: {
@@ -53,7 +56,10 @@ export default defineComponent({
       };
 
       console.log('Benutzereingabe:', userInput);
-      return userInput;
+
+      this.image = matchImage(userInput.color, userInput.category);
+
+      console.log(this.image);
     },
   },
   name: 'AiImageGenerator',

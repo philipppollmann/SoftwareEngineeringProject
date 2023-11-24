@@ -3,7 +3,7 @@
     <nav class="p-5 shadow md:flex md:items-center md:justify-between">
       <div class="flex justify-between items-center">
         <span class="text-2xl font-[Poppins] cursor-pointer">
-          <a class="text-3xl font-bold" href="/">Cover Your Walls</a>
+          <img src="../public/img/Website_Logo.png" alt="Logo"/>
         </span>
 
         <span class="text-3xl cursor-pointer mx-2 md:hidden block w-12 h-12">

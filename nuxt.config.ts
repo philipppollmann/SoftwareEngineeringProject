@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode',
-        '@invictus.codes/nuxt-vuetify'
+        '@invictus.codes/nuxt-vuetify',
+        '@nuxt/image',
     ],
     vuetify: {
         /* vuetify options */
