@@ -1,19 +1,61 @@
 <template>
-  <img src="../assets/img/banner.png" alt="Banner">
-  <div class="m-5 bg-gray-500  border-gray-800 border-2 rounded-lg w-48 h-48 overflow-hidden">
-    <img :src="birdImg" alt="Icon" class="w-40 h-40 object-contain cursor-pointer items-center"/>
+  <div>
+    <img src="../assets/img/banner.png" alt="Banner">
+
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-gray-500 border-gray-800 border-2 rounded-lg w-72 h-72 overflow-hidden text-center">
+        <div class="relative inline-block text-left">
+
+          <p>Select your category:</p>
+          <select v-model="category" class="appearance-none m-2 p-2 bg-white border border-gray-300 rounded-md shadow-sm">
+            <option value="japan">Japan</option>
+            <option value="nature">Nature</option>
+            <option value="car">Car</option>
+          </select>
+        </div>
+
+        <p>Select your preferred color:</p>
+        <div class="relative inline-block text-left">
+          <select v-model="color" class="appearance-none m-2 p-2 bg-white border border-gray-300 rounded-md shadow-sm">
+            <option value="white">White</option>
+            <option value="brown">Brown</option>
+            <option value="colorful">Colorful</option>
+            <option value="pink">Pink</option>
+            <option value="green">Green</option>
+            <option value="grey">Grey</option>
+          </select>
+        </div>
+        <br/>
+
+        <button @click="submitForm" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-auto">Submit</button>
+
+        <img :src="category" :alt="color" class="w-40 h-40 object-contain cursor-pointer items-center mx-auto"/>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import birdImage from '~/assets/img/bird.jpg'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   data() {
     return {
-      imagePath: birdImage
+      category: 'japan',
+      color: 'white',
     };
   },
+  methods: {
+    submitForm() {
+      const userInput = {
+        category: this.category,
+        color: this.color,
+      };
+
+      console.log('Benutzereingabe:', userInput);
+      return userInput;
+    },
+  },
   name: 'AiImageGenerator',
-};
+});
 </script>
