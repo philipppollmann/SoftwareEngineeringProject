@@ -39,7 +39,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> <br/>
 </template>
 
 <script lang="ts">

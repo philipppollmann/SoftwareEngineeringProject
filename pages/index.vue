@@ -7,8 +7,27 @@
 
     <h1>Generate your own AI Poster</h1>
 
-    <PosterCard image-url="Cars.jpeg"></PosterCard>
+    <div class="flex">
+      <PosterCard image-url="img/anime.jpg"></PosterCard>
+      <PosterCard image-url="img/bird.jpg"></PosterCard>
+      <PosterCard image-url="img/Butterfly.jpeg"></PosterCard>
+      <PosterCard image-url="img/Cars.jpeg"></PosterCard>
+      <PosterCard image-url="img/flamingo.jpg"></PosterCard>
+      <PosterCard image-url="img/flower.jpg"></PosterCard>
+      <PosterCard image-url="img/flowerwhite.jpeg"></PosterCard>
+    </div>
+    <div class="flex">
+      <PosterCard image-url="img/mountains.jpg"></PosterCard>
+      <PosterCard image-url="img/anime.jpg"></PosterCard>
+      <PosterCard image-url="img/bird.jpg"></PosterCard>
+      <PosterCard image-url="img/Butterfly.jpeg"></PosterCard>
+      <PosterCard image-url="img/Cars.jpeg"></PosterCard>
+      <PosterCard image-url="img/flamingo.jpg"></PosterCard>
+      <PosterCard image-url="img/flower.jpg"></PosterCard>
+    </div>
   </div>
+
+  <idea-helper></idea-helper>
 </template>
 
 <script>
