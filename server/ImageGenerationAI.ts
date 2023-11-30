@@ -12,4 +12,8 @@ async function main() {
     console.log(completion.choices[0]);
 }
 
+export async function GenerateImageByAI(): Promise<String>{
+    return "";
+}
+
 main();

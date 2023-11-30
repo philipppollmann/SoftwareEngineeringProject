@@ -1,11 +1,8 @@
 <template>
   <div>
-    <img src="../public/img/banner.png" alt="Banner">
-
     <div class="flex justify-center items-center h-screen">
-      <div class="bg-gray-500 border-gray-800 border-2 rounded-lg w-72 h-72 overflow-hidden text-center">
+      <div class="bg-gray-500 border-gray-800 border-2 rounded-lg w-96 h-auto overflow-hidden text-center">
         <div class="relative inline-block text-left">
-
           <p>Select your category:</p>
           <select v-model="category" class="appearance-none m-2 p-2 bg-white border border-gray-300 rounded-md shadow-sm">
             <option value="japan">Japan</option>
@@ -13,7 +10,6 @@
             <option value="car">Car</option>
           </select>
         </div>
-
 
         <p>Select your preferred color:</p>
         <div class="relative inline-block text-left">
@@ -28,9 +24,19 @@
         </div>
         <br/>
 
-        <button @click="submitForm" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-auto">Submit</button>
+        <button @click="submitForm" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-auto">
+          Generate my personal image
+        </button>
+        <br/>
 
-        <img :src="image" :alt="color" class="w-40 h-40 object-contain cursor-pointer items-center mx-auto"/>
+        <loading-animation v-if="loading"></loading-animation>
+
+        <img v-if="!loading" :src="image" :alt="color" class="h-96 object-contain cursor-pointer items-center mx-auto"/>
+        <br/>
+
+        <button @click="downloadImage" class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mx-auto">
+          Download the image
+        </button>
       </div>
     </div>
   </div>
@@ -46,6 +52,7 @@ export default defineComponent({
       category: 'japan',
       color: 'white',
       image: '',
+      loading: false,
     };
   },
   methods: {
@@ -57,10 +64,28 @@ export default defineComponent({
 
       console.log('Benutzereingabe:', userInput);
 
-      this.image = matchImage(userInput.color, userInput.category);
+      this.loading = true;
 
-      console.log(this.image);
+      setTimeout(() => {
+        this.image = matchImage(userInput.color, userInput.category);
+        this.loading = false;
+        console.log(this.image);
+      }, 5000);
     },
+    downloadImage() {
+      if (this.image) {
+        const link = document.createElement('a');
+        link.href = this.image;
+
+        link.download = 'downloaded_image';
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+      }
+    }
   },
   name: 'AiImageGenerator',
 });
