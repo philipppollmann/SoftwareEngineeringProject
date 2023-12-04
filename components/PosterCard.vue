@@ -1,5 +1,5 @@
 <template>
-  <div class="m-5 bg-gray-500  border-gray-800 border-2 rounded-lg w-52 h-52 overflow-hidden">
+  <div class="m-5 bg-gray-500  border-gray-800 border-2 rounded-lg w-48 h-52 overflow-hidden">
     <br/>
     <img :src="imageUrl" alt="Icon" class="w-40 h-40 object-contain cursor-pointer items-center"/>
     <p class="text-center">

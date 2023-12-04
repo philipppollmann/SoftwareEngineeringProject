@@ -28,11 +28,15 @@
   </div>
 
   <idea-helper></idea-helper>
+  <chat-g-p-t-answer></chat-g-p-t-answer>
 </template>
 
 <script>
 
+import ChatGPTAnswer from "~/components/ChatGPTAnswer.vue";
+
 export default {
+  components: {ChatGPTAnswer}
 
 };
 </script>
